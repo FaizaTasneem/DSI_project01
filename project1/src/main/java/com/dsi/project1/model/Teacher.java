@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+
 @Setter
 @Getter
 @Entity
@@ -22,4 +23,26 @@ public class Teacher {
     private String gender;
     private int age;
 
+    public Teacher(int tid, String name, String dept, String gender, int age) {
+        this.tid = tid;
+        this.name = name;
+        this.dept = dept;
+        this.gender = gender;
+        this.age = age;
+    }
+
+    public Teacher() {
+
+    }
+
+    @Override
+    public String toString() {
+        return "Teacher{" +
+                "tid=" + tid +
+                ", name='" + name + '\'' +
+                ", dept='" + dept + '\'' +
+                ", gender='" + gender + '\'' +
+                ", age=" + age +
+                '}';
+    }
 }
