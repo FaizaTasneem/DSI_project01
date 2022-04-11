@@ -1,6 +1,6 @@
 package com.dsi.project1.service;
 
-import com.dsi.project1.model.Students;
+import com.dsi.project1.model.Student;
 import com.dsi.project1.repository.StudentsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,15 +13,15 @@ public class StudentsService {
     @Autowired
     StudentsRepository studentsRepository;
 
-    public List<Students> getAllStudents(){
+    public List<Student> getAllStudents(){
         return studentsRepository.findAll();
     }
 
-    public Students getStudentById(int id){
+    public Student getStudentById(int id){
         return studentsRepository.findById(id).get();
     }
 
-    public void saveStudent(Students student){
+    public void saveStudent(Student student){
         studentsRepository.save(student);
     }
 
@@ -29,7 +29,7 @@ public class StudentsService {
         studentsRepository.deleteById(id);
     }
 
-    public void updateStudent(Students student, int id){
+    public void updateStudent(Student student, int id){
         studentsRepository.findById(id).map(s -> {
             s.setName(student.getName());
             s.setEmail(student.getEmail());

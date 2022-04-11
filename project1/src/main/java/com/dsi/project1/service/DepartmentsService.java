@@ -1,6 +1,6 @@
 package com.dsi.project1.service;
 
-import com.dsi.project1.model.Departments;
+import com.dsi.project1.model.Department;
 import com.dsi.project1.repository.DepartmentsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,15 +13,15 @@ public class DepartmentsService {
     @Autowired
     DepartmentsRepository departmentsRepository;
 
-    public List<Departments> getAllDepts(){
+    public List<Department> getAllDepts(){
         return departmentsRepository.findAll();
     }
 
-    public Departments getDeptById(int id){
+    public Department getDeptById(int id){
         return departmentsRepository.findById(id).get();
     }
 
-    public void saveDept(Departments dept){
+    public void saveDept(Department dept){
         departmentsRepository.save(dept);
     }
 
@@ -29,7 +29,7 @@ public class DepartmentsService {
         departmentsRepository.deleteById(id);
     }
 
-    public void updateDept(Departments dept, int id){
+    public void updateDept(Department dept, int id){
         departmentsRepository.findById(id).map(d -> {
             d.setName(dept.getName());
             return departmentsRepository.save(dept);

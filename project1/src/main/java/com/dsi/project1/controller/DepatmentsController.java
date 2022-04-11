@@ -1,8 +1,7 @@
 package com.dsi.project1.controller;
 
-import com.dsi.project1.model.Departments;
+import com.dsi.project1.model.Department;
 import com.dsi.project1.service.DepartmentsService;
-import org.springframework.beans.factory.ListableBeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,17 +14,17 @@ public class DepatmentsController {
     DepartmentsService departmentsService;
 
     @GetMapping("/alldepts")
-    public List<Departments> getAllDepts(){
+    public List<Department> getAllDepts(){
         return departmentsService.getAllDepts();
     }
 
     @GetMapping("/{id}")
-    public Departments getDeptById(@PathVariable("id") int id){
+    public Department getDeptById(@PathVariable("id") int id){
         return departmentsService.getDeptById(id);
     }
 
     @PostMapping("/")
-    public void saveDept(@RequestBody Departments dept){
+    public void saveDept(@RequestBody Department dept){
         departmentsService.saveDept(dept);
     }
 
@@ -35,7 +34,7 @@ public class DepatmentsController {
     }
 
     @PutMapping("/{id}")
-    public void updateDept(@RequestBody Departments dept, @PathVariable("id") int id){
+    public void updateDept(@RequestBody Department dept, @PathVariable("id") int id){
         departmentsService.updateDept(dept,id);
     }
 }
