@@ -23,7 +23,7 @@ public class DepatmentsController {
         return departmentsService.getDeptById(id);
     }
 
-    @PostMapping("/")
+    @PostMapping("/create")
     public void saveDept(@RequestBody Department dept){
         departmentsService.saveDept(dept);
     }

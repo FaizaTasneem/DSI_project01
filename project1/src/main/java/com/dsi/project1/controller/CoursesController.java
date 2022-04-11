@@ -20,11 +20,11 @@ public class CoursesController {
     }
 
     @GetMapping("/{id}")
-    public Course getCourseById(int id){
+    public Course getCourseById(@PathVariable("id")int id){
         return coursesService.getCourseById(id);
     }
 
-    @PostMapping("/")
+    @PostMapping("/create")
     public void saveCourse(@RequestBody Course course){
         coursesService.saveCourse(course);
     }
@@ -37,5 +37,9 @@ public class CoursesController {
     @PutMapping("/{id}")
     public void updateCourse(@RequestBody Course course, @PathVariable("id") int id){
         coursesService.updateCourse(course,id);
+    }
+    @PutMapping("/{courseId}/students/{studentId}")
+    public Course enrollStudentToCourse(@PathVariable("courseId")int cid, @PathVariable("studentId") int sid){
+        return coursesService.enrollStudent(cid,sid);
     }
 }
