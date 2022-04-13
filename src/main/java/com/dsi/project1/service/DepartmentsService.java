@@ -1,6 +1,9 @@
 package com.dsi.project1.service;
 
+import com.dsi.project1.model.Course;
 import com.dsi.project1.model.Department;
+import com.dsi.project1.model.Student;
+import com.dsi.project1.repository.CoursesRepository;
 import com.dsi.project1.repository.DepartmentsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,5 +41,6 @@ public class DepartmentsService {
             return departmentsRepository.save(dept);
         });
     }
+
 
 }

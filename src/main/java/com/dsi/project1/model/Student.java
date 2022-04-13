@@ -6,7 +6,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -25,12 +27,20 @@ public class Student {
     private int age;
 
     @JsonIgnore
-    @ManyToMany(mappedBy = "enrolledStudents")
-    private Set<Course> courses = new HashSet<>();
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "dept_id", referencedColumnName = "id")
+    private Department department;
 
-    public Set<Course> getCourses() {
+    @JsonIgnore
+    @ManyToMany(mappedBy = "enrolledStudents")
+    private List<Course> courses = new ArrayList<>();
+
+    public List<Course> getCourses() {
         return courses;
     }
 
+    public void addToDept(Department dept){
+        department = dept;
+    }
 
 }

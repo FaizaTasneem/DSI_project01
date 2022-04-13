@@ -38,8 +38,24 @@ public class CoursesController {
     public void updateCourse(@RequestBody Course course, @PathVariable("id") int id){
         coursesService.updateCourse(course,id);
     }
-    @PutMapping("/{courseId}/students/{studentId}")
+    @PutMapping("/{courseId}/addstd/{studentId}")
     public Course enrollStudentToCourse(@PathVariable("courseId")int cid, @PathVariable("studentId") int sid){
         return coursesService.enrollStudent(cid,sid);
     }
+    @PutMapping ("/{courseId}/delstd/{studentId}")
+    public Course removeStudentFromCourse(@PathVariable("courseId")int cid, @PathVariable("studentId") int sid){
+        return coursesService.removeStudent(cid,sid);
+    }
+
+    @PutMapping("/{courseId}/adddept/{deptId}")
+    public Course addToDept(@PathVariable("courseId")int cid, @PathVariable("deptId") int did){
+        return coursesService.addToDept(cid,did);
+    }
+
+    @PutMapping ("/{courseId}/deldept/{deptId}")
+    public Course removeFromDept(@PathVariable("courseId")int cid, @PathVariable("deptId") int did){
+        return coursesService.removeFromDept(cid,did);
+    }
+
+
 }

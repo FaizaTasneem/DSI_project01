@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/departments")
+@RequestMapping("/depts")
 public class DepatmentsController {
     @Autowired
     DepartmentsService departmentsService;
@@ -37,4 +37,6 @@ public class DepatmentsController {
     public void updateDept(@RequestBody Department dept, @PathVariable("id") int id){
         departmentsService.updateDept(dept,id);
     }
+
+
 }
