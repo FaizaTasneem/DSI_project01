@@ -2,19 +2,18 @@ package com.dsi.project1.service;
 
 
 import com.dsi.project1.model.Section;
-import com.dsi.project1.model.Student;
-import com.dsi.project1.repository.SectionRespository;
+import com.dsi.project1.repository.SectionsRespository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class SectionService {
+public class SectionsService {
 
 
     @Autowired
-    private SectionRespository sectionRespository;
+    private SectionsRespository sectionRespository;
 
     public List<Section> getAllSection(){
 
@@ -35,10 +34,10 @@ public class SectionService {
 
     public void updateSection(Section section, int secid){
         sectionRespository.findById(secid).map(s -> {
-            s.setSecname(section.getSecname());
+            s.setName(section.getName());
             return sectionRespository.save(section);
         }).orElseGet(() -> {
-            section.setSecid(secid);
+            section.setId(secid);
             return sectionRespository.save(section);
         });
     }

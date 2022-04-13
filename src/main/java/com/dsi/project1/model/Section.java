@@ -7,16 +7,18 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "sections")
 public class Section {
 
     @Id
-    private int secid;
+    private int id;
 
-    private String secname;
+    private String name;
 }

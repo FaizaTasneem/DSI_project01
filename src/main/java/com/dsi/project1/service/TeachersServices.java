@@ -1,7 +1,9 @@
 package com.dsi.project1.service;
 
+import com.dsi.project1.model.Department;
 import com.dsi.project1.model.Student;
 import com.dsi.project1.model.Teacher;
+import com.dsi.project1.repository.DepartmentsRepository;
 import com.dsi.project1.repository.TeachersRespository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,11 +11,12 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class TeacherServices {
+public class TeachersServices {
 
     @Autowired
     TeachersRespository teachersRespository;
-
+    @Autowired
+    DepartmentsRepository departmentsRepository;
 
     public List<Teacher> getAllTeachers(){
         return  teachersRespository.findAll();
@@ -37,11 +40,25 @@ public class TeacherServices {
             s.setName(teacher.getName());
             s.setGender(teacher.getGender());
             s.setAge(teacher.getAge());
-            s.setDept(teacher.getDept());
             return teachersRespository.save(teacher);
         }).orElseGet(() -> {
-            teacher.setTid(tid);
+            teacher.setId(tid);
             return teachersRespository.save(teacher);
         });
+    }
+
+    public Teacher addToDept(int tid, int did) {
+        Teacher teacher = teachersRespository.findById(tid).get();
+        Department department = departmentsRepository.findById(did).get();
+        teacher.addToDept(department);
+        return teachersRespository.save(teacher);
+    }
+
+    public Teacher removeFromDept(int tid, int did) {
+        Teacher teacher = teachersRespository.findById(tid).get();
+        Department department = departmentsRepository.findById(did).get();
+        teacher.setDepartment(null);
+        department.deleteTeacher(teacher);
+        return teachersRespository.save(teacher);
     }
 }

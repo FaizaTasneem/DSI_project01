@@ -1,19 +1,18 @@
 package com.dsi.project1.controller;
 
 
-import com.dsi.project1.model.Course;
 import com.dsi.project1.model.Section;
-import com.dsi.project1.service.SectionService;
+import com.dsi.project1.service.SectionsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-public class SectionController {
+public class SectionsController {
 
     @Autowired
-    private SectionService sectionService;
+    private SectionsService sectionService;
 
     @GetMapping("/allsection")
     private List<Section> getAllSections(){

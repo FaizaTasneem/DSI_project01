@@ -27,6 +27,9 @@ public class Department {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "department")
     private List<Student> students = new ArrayList<>();
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "department")
+    private List<Teacher> teachers = new ArrayList<>();
+
 //    public void addCourse(Course course){
 //        courses.add(course);
 //    }
@@ -37,5 +40,9 @@ public class Department {
 
     public void deleteStudent(Student student){
         students.remove(student);
+    }
+
+    public void deleteTeacher(Teacher teacher){
+        teachers.remove(teacher);
     }
 }

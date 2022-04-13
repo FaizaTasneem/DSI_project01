@@ -1,48 +1,33 @@
 package com.dsi.project1.model;
 
 
-import lombok.Getter;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 
-@Setter
-@Getter
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
+@Table(name = "teachers")
 public class Teacher {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int tid;
+    private int id;
     private String name;
-    private String dept;
     private String gender;
     private int age;
+    private String bloodgrp;
 
-    public Teacher(int tid, String name, String dept, String gender, int age) {
-        this.tid = tid;
-        this.name = name;
-        this.dept = dept;
-        this.gender = gender;
-        this.age = age;
-    }
+    @JsonIgnore
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "dept_id", referencedColumnName = "id")
+    private Department department;
 
-    public Teacher() {
-
-    }
-
-    @Override
-    public String toString() {
-        return "Teacher{" +
-                "tid=" + tid +
-                ", name='" + name + '\'' +
-                ", dept='" + dept + '\'' +
-                ", gender='" + gender + '\'' +
-                ", age=" + age +
-                '}';
+    public void addToDept(Department dept){
+        department = dept;
     }
 }

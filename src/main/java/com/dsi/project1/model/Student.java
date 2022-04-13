@@ -25,6 +25,7 @@ public class Student {
     private String email;
     private String gender;
     private int age;
+    private String bloodgrp;
 
     @JsonIgnore
     @ManyToOne(cascade = CascadeType.ALL)
