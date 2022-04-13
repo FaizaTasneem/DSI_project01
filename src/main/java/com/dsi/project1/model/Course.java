@@ -28,6 +28,9 @@ public class Course {
     @JoinColumn(name = "dept_id", referencedColumnName = "id")
     private Department department;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "course")
+    private List<Section> sections = new ArrayList<>();
+
     //@JsonIgnore
     @ManyToMany
     @JoinTable(
@@ -49,4 +52,7 @@ public class Course {
         department = dept;
     }
 
+    public void deleteSection(Section section) {
+        sections.remove(section);
+    }
 }
