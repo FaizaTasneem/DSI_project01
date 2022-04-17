@@ -14,7 +14,7 @@ public class StudentsController {
     @Autowired
     StudentsService studentsService;
 
-    @GetMapping("/allstudents")
+    @GetMapping("/all")
     public List<Student> getAllStudents(){
         return studentsService.getAllStudents();
     }
@@ -24,7 +24,7 @@ public class StudentsController {
         return studentsService.getStudentById(id);
     }
 
-    @PostMapping("/create")
+    @PostMapping
     public void saveStudent(@RequestBody Student student){
         studentsService.saveStudent(student);
     }

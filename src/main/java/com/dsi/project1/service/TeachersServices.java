@@ -1,10 +1,9 @@
 package com.dsi.project1.service;
 
 import com.dsi.project1.model.Department;
-import com.dsi.project1.model.Student;
 import com.dsi.project1.model.Teacher;
 import com.dsi.project1.repository.DepartmentsRepository;
-import com.dsi.project1.repository.TeachersRespository;
+import com.dsi.project1.repository.TeachersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +13,7 @@ import java.util.List;
 public class TeachersServices {
 
     @Autowired
-    TeachersRespository teachersRespository;
+    TeachersRepository teachersRespository;
     @Autowired
     DepartmentsRepository departmentsRepository;
 

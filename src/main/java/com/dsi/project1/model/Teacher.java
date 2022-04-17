@@ -27,6 +27,9 @@ public class Teacher {
     @JoinColumn(name = "dept_id", referencedColumnName = "id")
     private Department department;
 
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "teacher")
+    private Section section;
+
     public void addToDept(Department dept){
         department = dept;
     }

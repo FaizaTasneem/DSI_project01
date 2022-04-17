@@ -13,7 +13,7 @@ public class DepatmentsController {
     @Autowired
     DepartmentsService departmentsService;
 
-    @GetMapping("/alldepts")
+    @GetMapping("/all")
     public List<Department> getAllDepts(){
         return departmentsService.getAllDepts();
     }
@@ -23,7 +23,7 @@ public class DepatmentsController {
         return departmentsService.getDeptById(id);
     }
 
-    @PostMapping("/create")
+    @PostMapping
     public void saveDept(@RequestBody Department dept){
         departmentsService.saveDept(dept);
     }

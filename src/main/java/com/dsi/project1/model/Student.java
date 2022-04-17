@@ -36,9 +36,10 @@ public class Student {
     @ManyToMany(mappedBy = "enrolledStudents")
     private List<Course> courses = new ArrayList<>();
 
-    public List<Course> getCourses() {
-        return courses;
-    }
+    @JsonIgnore
+    @ManyToMany(mappedBy = "totalStudents")
+    private List<Section> sections = new ArrayList<>();
+
 
     public void addToDept(Department dept){
         department = dept;

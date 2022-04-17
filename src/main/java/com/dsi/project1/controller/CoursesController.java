@@ -14,7 +14,7 @@ public class CoursesController {
     @Autowired
     CoursesService coursesService;
 
-    @GetMapping("/allcourses")
+    @GetMapping("/all")
     public List<Course> getAllCourses(){
         return coursesService.getAllCourses();
     }
@@ -24,7 +24,7 @@ public class CoursesController {
         return coursesService.getCourseById(id);
     }
 
-    @PostMapping("/create")
+    @PostMapping
     public void saveCourse(@RequestBody Course course){
         coursesService.saveCourse(course);
     }
